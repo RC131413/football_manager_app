@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Microsoft Visual Studio\\FootballClubsApp\\FootballClubsApp\\FootballClubsApp.csproj": {}
+    "C:\\Users\\Windows\\Desktop\\FootballClubsApp\\football_manager_app\\FootballClubsApp\\FootballClubsApp.csproj": {}
   },
   "projects": {
-    "D:\\Microsoft Visual Studio\\FootballClubsApp\\FootballClubsApp\\FootballClubsApp.csproj": {
+    "C:\\Users\\Windows\\Desktop\\FootballClubsApp\\football_manager_app\\FootballClubsApp\\FootballClubsApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Microsoft Visual Studio\\FootballClubsApp\\FootballClubsApp\\FootballClubsApp.csproj",
+        "projectUniqueName": "C:\\Users\\Windows\\Desktop\\FootballClubsApp\\football_manager_app\\FootballClubsApp\\FootballClubsApp.csproj",
         "projectName": "FootballClubsApp",
-        "projectPath": "D:\\Microsoft Visual Studio\\FootballClubsApp\\FootballClubsApp\\FootballClubsApp.csproj",
+        "projectPath": "C:\\Users\\Windows\\Desktop\\FootballClubsApp\\football_manager_app\\FootballClubsApp\\FootballClubsApp.csproj",
         "packagesPath": "C:\\Users\\Windows\\.nuget\\packages\\",
-        "outputPath": "D:\\Microsoft Visual Studio\\FootballClubsApp\\FootballClubsApp\\obj\\",
+        "outputPath": "C:\\Users\\Windows\\Desktop\\FootballClubsApp\\football_manager_app\\FootballClubsApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Visual Studio\\Shared\\NuGetPackages"
@@ -49,6 +49,16 @@
       "frameworks": {
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
+          "dependencies": {
+            "Microsoft.Data.Sqlite": {
+              "target": "Package",
+              "version": "[9.0.5, )"
+            },
+            "Microsoft.Data.Sqlite.Core": {
+              "target": "Package",
+              "version": "[9.0.5, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -68,7 +78,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

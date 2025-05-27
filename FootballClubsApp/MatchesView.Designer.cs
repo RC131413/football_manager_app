@@ -66,6 +66,7 @@
             dgvMatches.ReadOnly = true;
             dgvMatches.Size = new Size(476, 278);
             dgvMatches.TabIndex = 2;
+            dgvMatches.CellDoubleClick += dgvMatches_CellDoubleClick;
             // 
             // MatchesView
             // 

@@ -1,13 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Compile Update="AddCompetitionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="AddMatchForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="AddClubForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="AddCompetitionForm.cs">
+    <Compile Update="AddMatchEventForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="AddPlayerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="MatchEventsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="MainForm.cs">
@@ -23,6 +32,9 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="HomeView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="PlayersView.cs">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>

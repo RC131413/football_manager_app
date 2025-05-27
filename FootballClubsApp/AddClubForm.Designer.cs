@@ -30,65 +30,52 @@
         {
             btnOK = new Button();
             btnCancel = new Button();
-            txtClubName = new TextBox();
+            txtName = new TextBox();
             label5 = new Label();
-            label4 = new Label();
             label3 = new Label();
             label2 = new Label();
-            dtpFounded = new DateTimePicker();
+            dtpFoundedDate = new DateTimePicker();
             label1 = new Label();
             txtCity = new TextBox();
             txtStadium = new TextBox();
-            numPlayers = new NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)numPlayers).BeginInit();
             SuspendLayout();
             // 
             // btnOK
             // 
-            btnOK.DialogResult = DialogResult.OK;
-            btnOK.Location = new Point(344, 374);
+            btnOK.Location = new Point(344, 325);
             btnOK.Name = "btnOK";
             btnOK.Size = new Size(75, 23);
             btnOK.TabIndex = 23;
             btnOK.Text = "OK";
             btnOK.UseVisualStyleBackColor = true;
+            btnOK.Click += btnOK_Click;
             // 
             // btnCancel
             // 
             btnCancel.DialogResult = DialogResult.Cancel;
-            btnCancel.Location = new Point(425, 374);
+            btnCancel.Location = new Point(425, 325);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(75, 23);
             btnCancel.TabIndex = 22;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
             // 
-            // txtClubName
+            // txtName
             // 
-            txtClubName.Location = new Point(300, 76);
-            txtClubName.Name = "txtClubName";
-            txtClubName.Size = new Size(100, 23);
-            txtClubName.TabIndex = 20;
+            txtName.Location = new Point(300, 76);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(100, 23);
+            txtName.TabIndex = 20;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 238);
-            label5.Location = new Point(300, 289);
+            label5.Location = new Point(300, 240);
             label5.Name = "label5";
             label5.Size = new Size(111, 20);
             label5.TabIndex = 18;
             label5.Text = "Data założenia";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 238);
-            label4.Location = new Point(300, 230);
-            label4.Name = "label4";
-            label4.Size = new Size(143, 20);
-            label4.TabIndex = 17;
-            label4.Text = "Liczba zawodników";
             // 
             // label3
             // 
@@ -110,12 +97,12 @@
             label2.TabIndex = 14;
             label2.Text = "Miasto";
             // 
-            // dtpFounded
+            // dtpFoundedDate
             // 
-            dtpFounded.Location = new Point(300, 312);
-            dtpFounded.Name = "dtpFounded";
-            dtpFounded.Size = new Size(200, 23);
-            dtpFounded.TabIndex = 13;
+            dtpFoundedDate.Location = new Point(300, 263);
+            dtpFoundedDate.Name = "dtpFoundedDate";
+            dtpFoundedDate.Size = new Size(200, 23);
+            dtpFoundedDate.TabIndex = 13;
             // 
             // label1
             // 
@@ -141,35 +128,25 @@
             txtStadium.Size = new Size(100, 23);
             txtStadium.TabIndex = 25;
             // 
-            // numPlayers
-            // 
-            numPlayers.Location = new Point(300, 253);
-            numPlayers.Name = "numPlayers";
-            numPlayers.Size = new Size(120, 23);
-            numPlayers.TabIndex = 26;
-            // 
             // AddClubForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(numPlayers);
             Controls.Add(txtStadium);
             Controls.Add(txtCity);
             Controls.Add(btnOK);
             Controls.Add(btnCancel);
-            Controls.Add(txtClubName);
+            Controls.Add(txtName);
             Controls.Add(label5);
-            Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(dtpFounded);
+            Controls.Add(dtpFoundedDate);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "AddClubForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)numPlayers).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -178,15 +155,13 @@
 
         private Button btnOK;
         private Button btnCancel;
-        private TextBox txtClubName;
+        private TextBox txtName;
         private Label label5;
-        private Label label4;
         private Label label3;
         private Label label2;
-        private DateTimePicker dtpFounded;
+        private DateTimePicker dtpFoundedDate;
         private Label label1;
         private TextBox txtCity;
         private TextBox txtStadium;
-        private NumericUpDown numPlayers;
     }
 }

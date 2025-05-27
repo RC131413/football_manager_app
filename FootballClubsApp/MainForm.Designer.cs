@@ -34,12 +34,14 @@
             btnClubs = new Button();
             btnCompetitions = new Button();
             panelContent = new Panel();
+            btnPlayers = new Button();
             panelNav.SuspendLayout();
             SuspendLayout();
             // 
             // panelNav
             // 
             panelNav.BackColor = SystemColors.ControlDarkDark;
+            panelNav.Controls.Add(btnPlayers);
             panelNav.Controls.Add(btnHome);
             panelNav.Controls.Add(btnMatches);
             panelNav.Controls.Add(btnClubs);
@@ -102,6 +104,16 @@
             panelContent.Size = new Size(609, 450);
             panelContent.TabIndex = 1;
             // 
+            // btnPlayers
+            // 
+            btnPlayers.Location = new Point(0, 135);
+            btnPlayers.Name = "btnPlayers";
+            btnPlayers.Size = new Size(191, 27);
+            btnPlayers.TabIndex = 2;
+            btnPlayers.Text = "Zawodnicy";
+            btnPlayers.UseVisualStyleBackColor = true;
+            btnPlayers.Click += btnPlayers_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -123,5 +135,6 @@
         private Button btnClubs;
         private Panel panelContent;
         private Button btnHome;
+        private Button btnPlayers;
     }
 }

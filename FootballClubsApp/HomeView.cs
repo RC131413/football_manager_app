@@ -15,6 +15,13 @@ namespace FootballClubsApp
         public HomeView()
         {
             InitializeComponent();
+            LoadStats();
+        }
+        private void LoadStats()
+        {
+            lblMatchesCount.Text = Database.GetMatchesCount().ToString();
+            lblClubsCount.Text = Database.GetClubsCount().ToString();
+            lblCompetitionsCount.Text = Database.GetCompetitionsCount().ToString();
         }
     }
 }

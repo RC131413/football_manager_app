@@ -70,5 +70,13 @@ namespace FootballClubsApp
         {
             ShowHomeView();
         }
+
+        private void btnPlayers_Click(object sender, EventArgs e)
+        {
+            panelContent.Controls.Clear();
+            PlayersView playersView = new PlayersView();
+            playersView.Dock = DockStyle.Fill;
+            panelContent.Controls.Add(playersView);
+        }
     }
 }
