@@ -64,7 +64,6 @@
             dgvClubs.Dock = DockStyle.Fill;
             dgvClubs.Location = new Point(0, 30);
             dgvClubs.Name = "dgvClubs";
-            dgvClubs.ReadOnly = true;
             dgvClubs.Size = new Size(431, 308);
             dgvClubs.TabIndex = 2;
             // 

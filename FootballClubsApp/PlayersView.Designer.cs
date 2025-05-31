@@ -63,7 +63,6 @@
             dgvPlayers.Dock = DockStyle.Fill;
             dgvPlayers.Location = new Point(0, 30);
             dgvPlayers.Name = "dgvPlayers";
-            dgvPlayers.ReadOnly = true;
             dgvPlayers.Size = new Size(534, 342);
             dgvPlayers.TabIndex = 2;
             // 

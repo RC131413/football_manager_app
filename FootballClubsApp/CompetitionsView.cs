@@ -19,6 +19,7 @@ namespace FootballClubsApp
             LoadCompetitions();
 
             dgvCompetitions.CellContentClick += dgvCompetitions_CellContentClick;
+            dgvCompetitions.CellValueChanged += dgvCompetitions_CellValueChanged;
         }
 
         private void InitializeCompetitionsGrid()
@@ -91,6 +92,23 @@ namespace FootballClubsApp
                     Database.DeleteCompetition(competition.Id); // Usuwanie z bazy
                     LoadCompetitions(); // Odśwież widok
                 }
+            }
+        }
+        private void dgvCompetitions_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            var competition = dgvCompetitions.Rows[e.RowIndex].DataBoundItem as Competition;
+            if (competition == null) return;
+
+            try
+            {
+                Database.UpdateCompetition(competition); // Zapisz zmiany w bazie
+                LoadCompetitions(); 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Błąd podczas aktualizacji rozgrywek: {ex.Message}");
             }
         }
 

@@ -219,6 +219,27 @@ namespace FootballClubsApp
             return events;
         }
 
+        public static void UpdateMatchEvent(MatchEvent matchEvent)
+        {
+            using (var connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+                var command = connection.CreateCommand();
+                command.CommandText = @"
+            UPDATE MatchEvents
+            SET Minute = @minute,
+                PlayerId = @playerId,
+                EventType = @eventType
+            WHERE Id = @id";
+                command.Parameters.AddWithValue("@minute", matchEvent.Minute);
+                command.Parameters.AddWithValue("@playerId", matchEvent.PlayerId);
+                command.Parameters.AddWithValue("@eventType", matchEvent.EventType);
+                command.Parameters.AddWithValue("@id", matchEvent.Id);
+                command.ExecuteNonQuery();
+            }
+        }
+
+
         public static void SaveMatch(Match match)
         {
             using (var connection = new SqliteConnection(connectionString))
@@ -237,6 +258,32 @@ namespace FootballClubsApp
             }
             MessageBox.Show("Mecz zapisany!");
         }
+        public static void UpdateMatch(Match match)
+        {
+            using (var connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+                var command = connection.CreateCommand();
+                command.CommandText = @"
+            UPDATE Matches
+            SET Date = @date,
+                HomeClubId = @homeClubId,
+                AwayClubId = @awayClubId,
+                HomeScore = @homeScore,
+                AwayScore = @awayScore,
+                CompetitionId = @competitionId
+            WHERE Id = @id";
+                command.Parameters.AddWithValue("@date", match.Date); // DateTime
+                command.Parameters.AddWithValue("@homeClubId", match.HomeClub.Id); // int
+                command.Parameters.AddWithValue("@awayClubId", match.AwayClub.Id); // int
+                command.Parameters.AddWithValue("@homeScore", match.HomeScore); // int
+                command.Parameters.AddWithValue("@awayScore", match.AwayScore); // int
+                command.Parameters.AddWithValue("@competitionId", match.Competition.Id); // int
+                command.Parameters.AddWithValue("@id", match.Id); // int
+                command.ExecuteNonQuery();
+            }
+        }
+
 
         public static void DeleteMatch(int matchId)
         {
@@ -299,6 +346,33 @@ namespace FootballClubsApp
                 command.ExecuteNonQuery();
             }
         }
+
+        public static void UpdatePlayer(Player player)
+        {
+            using (var connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+                var command = connection.CreateCommand();
+                command.CommandText = @"
+            UPDATE Players
+            SET FirstName = @firstName,
+                LastName = @lastName,
+                Position = @position,
+                Number = @number,
+                ClubId = @clubId
+            WHERE Id = @id";
+                command.Parameters.AddWithValue("@firstName", player.FirstName);
+                command.Parameters.AddWithValue("@lastName", player.LastName);
+                command.Parameters.AddWithValue("@position", player.Position ?? "");
+                command.Parameters.AddWithValue("@number", player.Number);
+                command.Parameters.AddWithValue("@clubId", player.ClubId);
+                command.Parameters.AddWithValue("@id", player.Id);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+
         public static void DeletePlayer(int playerId)
         {
             using (var connection = new SqliteConnection(connectionString))
@@ -324,6 +398,24 @@ namespace FootballClubsApp
                 command.ExecuteNonQuery();
             }
         }
+        public static void UpdateCompetition(Competition competition)
+        {
+            using (var connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+                var command = connection.CreateCommand();
+                command.CommandText = @"
+            UPDATE Competitions
+            SET Name = @name,
+                Season = @season
+            WHERE Id = @id";
+                command.Parameters.AddWithValue("@name", competition.Name);
+                command.Parameters.AddWithValue("@season", competition.Season);
+                command.Parameters.AddWithValue("@id", competition.Id);
+                command.ExecuteNonQuery();
+            }
+        }
+
         public static void DeleteCompetition(int competitionId)
         {
             using (var connection = new SqliteConnection(connectionString))
@@ -355,6 +447,28 @@ namespace FootballClubsApp
                 command.Parameters.AddWithValue("@stadium", club.Stadium ?? "");
                 command.Parameters.AddWithValue("@foundedDate", club.FoundedDate ?? "");
 
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public static void UpdateClub(Club club)
+        {
+            using (var connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+                var command = connection.CreateCommand();
+                command.CommandText = @"
+            UPDATE Clubs
+            SET Name = @name,
+                City = @city,
+                Stadium = @stadium,
+                FoundedDate = @foundedDate
+            WHERE Id = @id";
+                command.Parameters.AddWithValue("@name", club.Name);
+                command.Parameters.AddWithValue("@city", club.City);
+                command.Parameters.AddWithValue("@stadium", club.Stadium);
+                command.Parameters.AddWithValue("@foundedDate", club.FoundedDate);
+                command.Parameters.AddWithValue("@id", club.Id);
                 command.ExecuteNonQuery();
             }
         }

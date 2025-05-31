@@ -19,6 +19,8 @@ namespace FootballClubsApp
             LoadClubs();
 
             dgvClubs.CellContentClick += dgvClubs_CellContentClick;
+            dgvClubs.CellValueChanged += dgvClubs_CellValueChanged;
+
         }
 
         private void btnAddClub_Click(object sender, EventArgs e)
@@ -96,5 +98,23 @@ namespace FootballClubsApp
                 }
             }
         }
+        private void dgvClubs_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            var club = dgvClubs.Rows[e.RowIndex].DataBoundItem as Club;
+            if (club == null) return;
+
+            try
+            {
+                Database.UpdateClub(club); // Zapisz zmiany w bazie
+                LoadClubs(); 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Błąd podczas aktualizacji klubu: {ex.Message}");
+            }
+        }
+
     }
 }

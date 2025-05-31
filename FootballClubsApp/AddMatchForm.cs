@@ -17,12 +17,30 @@ namespace FootballClubsApp
         private Club _selectedAway;
         private bool isSelectingHome = true;
         private Competition _selectedCompetition;
+        private Match _editingMatch = null;
 
         public AddMatchForm()
         {
             InitializeComponent();
             LoadClubs();
             LoadCompetitions();
+        }
+        public AddMatchForm(Match matchToEdit) : this() // wywołuje konstruktor domyślny, który ładuje kluby i rozgrywki
+        {
+            _editingMatch = matchToEdit;
+
+            // Uzupełnij pola formularza danymi meczu
+            dtpDate.Value = matchToEdit.Date;
+            _selectedHome = matchToEdit.HomeClub;
+            _selectedAway = matchToEdit.AwayClub;
+            _selectedCompetition = matchToEdit.Competition;
+
+            lblSelectedHome.Text = $"Gospodarz: {_selectedHome.Name}";
+            lblSelectedAway.Text = $"Gość: {_selectedAway.Name}";
+            lblSelectedCompetition.Text = $"Wybrana rozgrywka: {_selectedCompetition.Name} ({_selectedCompetition.Season})";
+
+            txtScore.Text = $"{matchToEdit.HomeScore}:{matchToEdit.AwayScore}";
+            isSelectingHome = false; // domyślnie po edycji nie wybierasz gospodarza
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -53,18 +71,32 @@ namespace FootballClubsApp
                 return;
             }
 
-            var newMatch = new Match
+            if (_editingMatch == null)
             {
-                Date = dtpDate.Value,
-                HomeClub = _selectedHome,
-                AwayClub = _selectedAway,
-                HomeScore = homeScore,
-                AwayScore = awayScore,
-                Competition = _selectedCompetition
-            };
+                // Dodawanie nowego meczu
+                var newMatch = new Match
+                {
+                    Date = dtpDate.Value,
+                    HomeClub = _selectedHome,
+                    AwayClub = _selectedAway,
+                    HomeScore = homeScore,
+                    AwayScore = awayScore,
+                    Competition = _selectedCompetition
+                };
+                Database.SaveMatch(newMatch);
+            }
+            else
+            {
+                // Edycja istniejącego meczu
+                _editingMatch.Date = dtpDate.Value;
+                _editingMatch.HomeClub = _selectedHome;
+                _editingMatch.AwayClub = _selectedAway;
+                _editingMatch.HomeScore = homeScore;
+                _editingMatch.AwayScore = awayScore;
+                _editingMatch.Competition = _selectedCompetition;
 
-            // Zapisz do bazy lub listy
-            Database.SaveMatch(newMatch);
+                Database.UpdateMatch(_editingMatch);
+            }
 
             this.DialogResult = DialogResult.OK;
             this.Close();

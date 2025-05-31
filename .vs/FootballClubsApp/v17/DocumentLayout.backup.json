@@ -19,14 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "MainForm.cs [Projekt]",
+              "Title": "MainForm.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Windows\\Desktop\\FootballClubsApp\\football_manager_app\\FootballClubsApp\\MainForm.cs",
               "RelativeDocumentMoniker": "FootballClubsApp\\MainForm.cs",
-              "ToolTip": "C:\\Users\\Windows\\Desktop\\FootballClubsApp\\football_manager_app\\FootballClubsApp\\MainForm.cs [Projekt]",
-              "RelativeToolTip": "FootballClubsApp\\MainForm.cs [Projekt]",
+              "ToolTip": "C:\\Users\\Windows\\Desktop\\FootballClubsApp\\football_manager_app\\FootballClubsApp\\MainForm.cs [Design]",
+              "RelativeToolTip": "FootballClubsApp\\MainForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-31T14:20:37.097Z",
-              "EditorCaption": " [Projekt]"
+              "EditorCaption": " [Design]"
             }
           ]
         }

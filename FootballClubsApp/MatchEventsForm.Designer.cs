@@ -67,7 +67,6 @@
             dgvEvents.Dock = DockStyle.Fill;
             dgvEvents.Location = new Point(0, 30);
             dgvEvents.Name = "dgvEvents";
-            dgvEvents.ReadOnly = true;
             dgvEvents.Size = new Size(689, 420);
             dgvEvents.TabIndex = 2;
             // 
@@ -75,19 +74,16 @@
             // 
             Minute.HeaderText = "Minuta";
             Minute.Name = "Minute";
-            Minute.ReadOnly = true;
             // 
             // Player
             // 
             Player.HeaderText = "Zawodnik";
             Player.Name = "Player";
-            Player.ReadOnly = true;
             // 
             // EventType
             // 
             EventType.HeaderText = "Typ zdarzenia";
             EventType.Name = "EventType";
-            EventType.ReadOnly = true;
             // 
             // MatchEventsForm
             // 

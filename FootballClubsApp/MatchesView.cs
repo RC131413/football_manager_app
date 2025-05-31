@@ -10,12 +10,16 @@ using System.Windows.Forms;
 
 namespace FootballClubsApp
 {
-    public partial class MatchesView: UserControl
+    public partial class MatchesView : UserControl
     {
         public MatchesView()
         {
             InitializeComponent();
             InitializeMatchesGrid();
+
+            // Edycja tylko przez przycisk "Edytuj"
+            dgvMatches.ReadOnly = true;
+
             LoadMatches();
 
             dgvMatches.CellContentClick += dgvMatches_CellContentClick;
@@ -62,10 +66,19 @@ namespace FootballClubsApp
                 HeaderText = "Sezon"
             });
 
+            var btnEdit = new DataGridViewButtonColumn
+            {
+                Name = "btnEdit",
+                HeaderText = "Edytuj",
+                Text = "Edytuj",
+                UseColumnTextForButtonValue = true
+            };
+            dgvMatches.Columns.Add(btnEdit);
+
             var btnDelete = new DataGridViewButtonColumn
             {
                 Name = "btnDelete",
-                HeaderText = "Akcja",
+                HeaderText = "Usuń",
                 Text = "Usuń",
                 UseColumnTextForButtonValue = true
             };
@@ -94,7 +107,21 @@ namespace FootballClubsApp
         {
             if (e.RowIndex < 0) return;
 
-            // Sprawdź, czy kliknięto przycisk "Usuń"
+            // Edycja meczu
+            if (dgvMatches.Columns[e.ColumnIndex].Name == "btnEdit")
+            {
+                var match = dgvMatches.Rows[e.RowIndex].DataBoundItem as Match;
+                if (match == null) return;
+
+                var editMatchForm = new AddMatchForm(match); // Konstruktor przyjmujący istniejący mecz
+                if (editMatchForm.ShowDialog() == DialogResult.OK)
+                {
+                    LoadMatches(); // Odśwież widok po edycji
+                }
+                return; // Żeby nie wykonać kodu poniżej dla tego samego kliknięcia
+            }
+
+            // Usuwanie meczu
             if (dgvMatches.Columns[e.ColumnIndex].Name == "btnDelete")
             {
                 var match = dgvMatches.Rows[e.RowIndex].DataBoundItem as Match;
@@ -139,4 +166,3 @@ namespace FootballClubsApp
         }
     }
 }
-

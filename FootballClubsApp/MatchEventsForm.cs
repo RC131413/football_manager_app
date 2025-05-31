@@ -26,6 +26,8 @@ namespace FootballClubsApp
             InitializeEventsGrid();
             _currentMatch = match;
             dgvEvents.CellContentClick += dgvEvents_CellContentClick;
+            dgvEvents.CellValueChanged += dgvEvents_CellValueChanged;
+
 
             // Pobierz pełne dane klubów z bazy (z zawodnikami)
             _currentMatch.HomeClub = Database.GetClubWithPlayers(_currentMatch.HomeClub.Id);
@@ -147,7 +149,41 @@ namespace FootballClubsApp
                 }
             }
         }
+        private void dgvEvents_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
 
+            var matchEvent = dgvEvents.Rows[e.RowIndex].DataBoundItem as MatchEvent;
+            if (matchEvent == null) return;
+
+            try
+            {
+                Database.UpdateMatchEvent(matchEvent); // Zaktualizuj zdarzenie w bazie
+                SortAndRefreshEvents();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Błąd podczas aktualizacji zdarzenia: {ex.Message}");
+            }
+        }
+
+        // Wymusza natychmiastowe zatwierdzanie zmian po edycji komórki
+        private void dgvEvents_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (dgvEvents.IsCurrentCellDirty)
+                dgvEvents.CommitEdit(DataGridViewDataErrorContexts.Commit);
+        }
+
+        // Sortuje zdarzenia po minucie i odświeża widok
+        private void SortAndRefreshEvents()
+        {
+            var sorted = _events.OrderBy(ev => ev.Minute).ToList();
+            _events = new BindingList<MatchEvent>(sorted);
+            dgvEvents.DataSource = _events;
+        }
     }
 
+
 }
+
+

@@ -19,6 +19,7 @@ namespace FootballClubsApp
             LoadPlayers();
 
             dgvPlayers.CellContentClick += dgvPlayers_CellContentClick;
+            dgvPlayers.CellValueChanged += dgvPlayers_CellValueChanged;
 
         }
 
@@ -107,6 +108,25 @@ namespace FootballClubsApp
                 }
             }
         }
+        private void dgvPlayers_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            // Pobierz zawodnika z aktualnego wiersza
+            var player = dgvPlayers.Rows[e.RowIndex].DataBoundItem as Player;
+            if (player == null) return;
+
+            try
+            {
+                Database.UpdatePlayer(player); // Zaktualizuj zawodnika w bazie
+                LoadPlayers();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Błąd podczas aktualizacji zawodnika: {ex.Message}");
+            }
+        }
+
 
     }
 }
