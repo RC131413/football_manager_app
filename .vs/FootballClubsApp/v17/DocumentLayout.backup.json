@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\Windows\\Desktop\\FootballClubsApp\\football_manager_app\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C58D07BF-5795-46C1-AD8D-FDA458112290}|FootballClubsApp\\FootballClubsApp.csproj|c:\\users\\windows\\desktop\\footballclubsapp\\football_manager_app\\footballclubsapp\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C58D07BF-5795-46C1-AD8D-FDA458112290}|FootballClubsApp\\FootballClubsApp.csproj|solutionrelative:footballclubsapp\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C58D07BF-5795-46C1-AD8D-FDA458112290}|FootballClubsApp\\FootballClubsApp.csproj|c:\\users\\windows\\desktop\\footballclubsapp\\football_manager_app\\footballclubsapp\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{C58D07BF-5795-46C1-AD8D-FDA458112290}|FootballClubsApp\\FootballClubsApp.csproj|solutionrelative:footballclubsapp\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
@@ -19,14 +23,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "MainForm.cs [Design]",
+              "Title": "Database.cs",
+              "DocumentMoniker": "C:\\Users\\Windows\\Desktop\\FootballClubsApp\\football_manager_app\\FootballClubsApp\\Database.cs",
+              "RelativeDocumentMoniker": "FootballClubsApp\\Database.cs",
+              "ToolTip": "C:\\Users\\Windows\\Desktop\\FootballClubsApp\\football_manager_app\\FootballClubsApp\\Database.cs",
+              "RelativeToolTip": "FootballClubsApp\\Database.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T09:05:46.506Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainForm.cs [Projekt]",
               "DocumentMoniker": "C:\\Users\\Windows\\Desktop\\FootballClubsApp\\football_manager_app\\FootballClubsApp\\MainForm.cs",
               "RelativeDocumentMoniker": "FootballClubsApp\\MainForm.cs",
-              "ToolTip": "C:\\Users\\Windows\\Desktop\\FootballClubsApp\\football_manager_app\\FootballClubsApp\\MainForm.cs [Design]",
-              "RelativeToolTip": "FootballClubsApp\\MainForm.cs [Design]",
+              "ToolTip": "C:\\Users\\Windows\\Desktop\\FootballClubsApp\\football_manager_app\\FootballClubsApp\\MainForm.cs [Projekt]",
+              "RelativeToolTip": "FootballClubsApp\\MainForm.cs [Projekt]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-31T14:20:37.097Z",
-              "EditorCaption": " [Design]"
+              "EditorCaption": " [Projekt]"
             }
           ]
         }

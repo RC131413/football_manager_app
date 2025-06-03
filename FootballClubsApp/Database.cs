@@ -517,5 +517,93 @@ namespace FootballClubsApp
             }
         }
 
+        public static void SeedDatabase()
+        {
+            using (var connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+
+                // Sprawdź, czy baza jest już wypełniona
+                var checkClubs = connection.CreateCommand();
+                checkClubs.CommandText = "SELECT COUNT(*) FROM Clubs";
+                long clubsCount = (long)checkClubs.ExecuteScalar();
+
+                if (clubsCount == 0)
+                {
+                    // 1. Dodaj kluby
+                    var insertClubs = connection.CreateCommand();
+                    insertClubs.CommandText = @"
+                INSERT INTO Clubs (Name, City, Stadium, FoundedDate) VALUES 
+                ('FC Przykład', 'Warszawa', 'Stadion Narodowy', '1920-05-01'),
+                ('KS Test', 'Kraków', 'Stadion Miejski', '1945-03-15'),
+                ('Lech Poznań', 'Poznań', 'Stadion Lecha', '1922-03-19'),
+                ('Górnik Zabrze', 'Zabrze', 'Arena Zabrze', '1948-12-14'),
+                ('Pogoń Szczecin', 'Szczecin', 'Stadion Pogoni', '1948-04-21'),
+                ('Śląsk Wrocław', 'Wrocław', 'Stadion Wrocław', '1947-06-18');
+            ";
+                    insertClubs.ExecuteNonQuery();
+
+                    // 2. Dodaj rozgrywki
+                    var insertCompetitions = connection.CreateCommand();
+                    insertCompetitions.CommandText = @"
+                INSERT INTO Competitions (Name, Season) VALUES 
+                ('Ekstraklasa', '2024/2025'),
+                ('Puchar Polski', '2024/2025'),
+                ('I Liga', '2024/2025'),
+                ('Superpuchar', '2024/2025');
+            ";
+                    insertCompetitions.ExecuteNonQuery();
+
+                    // 3. Dodaj zawodników
+                    var insertPlayers = connection.CreateCommand();
+                    insertPlayers.CommandText = @"
+                INSERT INTO Players (FirstName, LastName, Position, Number, ClubId) VALUES 
+                ('Jan', 'Kowalski', 'Obrońca', 5, 1),
+                ('Adam', 'Nowak', 'Napastnik', 9, 1),
+                ('Piotr', 'Zieliński', 'Pomocnik', 8, 2),
+                ('Marcin', 'Lewandowski', 'Bramkarz', 1, 2),
+                ('Kamil', 'Kamiński', 'Obrońca', 4, 3),
+                ('Paweł', 'Bąk', 'Napastnik', 11, 3),
+                ('Tomasz', 'Szczęsny', 'Pomocnik', 7, 4),
+                ('Marek', 'Nowicki', 'Bramkarz', 12, 4),
+                ('Michał', 'Kowalczyk', 'Obrońca', 3, 5),
+                ('Grzegorz', 'Lis', 'Napastnik', 10, 5),
+                ('Rafał', 'Wójcik', 'Pomocnik', 6, 6),
+                ('Łukasz', 'Kaczmarek', 'Bramkarz', 13, 6);
+            ";
+                    insertPlayers.ExecuteNonQuery();
+
+                    // 4. Dodaj mecze
+                    var insertMatches = connection.CreateCommand();
+                    insertMatches.CommandText = @"
+                INSERT INTO Matches (Date, HomeClubId, AwayClubId, HomeScore, AwayScore, CompetitionId) VALUES 
+                ('2024-05-10', 1, 2, 2, 1, 1),
+                ('2024-05-17', 3, 4, 1, 1, 2),
+                ('2024-05-24', 5, 6, 3, 2, 3);
+            ";
+                    insertMatches.ExecuteNonQuery();
+
+                    // 5. Dodaj zdarzenia meczowe
+                    var insertMatchEvents = connection.CreateCommand();
+                    insertMatchEvents.CommandText = @"
+                INSERT INTO MatchEvents (MatchId, Minute, PlayerId, EventType) VALUES 
+                (1, 15, 2, 'Gol'),
+                (1, 42, 3, 'Żółta kartka'),
+                (1, 70, 1, 'Gol'),
+                (2, 23, 6, 'Gol'),
+                (2, 55, 7, 'Czerwona kartka'),
+                (2, 8, 5, 'Gol'),
+                (3, 12, 9, 'Gol'),
+                (3, 44, 10, 'Gol'),
+                (3, 67, 11, 'Gol'),
+                (1, 13, 2, 'Faul'),
+                (1, 12, 4, 'Żółta kartka');
+            ";
+                    insertMatchEvents.ExecuteNonQuery();
+                }
+            }
+        }
+
+
     }
 }
